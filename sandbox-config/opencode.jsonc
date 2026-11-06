@@ -17,7 +17,13 @@
     },
     "plan": {
       "model": "github-copilot/gpt-6.1-terra",
-      "permission": { "task": "allow" }
+      "permission": {
+        // "*": "deny",
+        "task": "allow",
+        "edit": {
+          "/home/agent/sandbox-notes/*": "allow"
+        }
+      }
     },
     "general": {
       "model": "github-copilot/gpt-6-luna",

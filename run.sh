@@ -8,15 +8,16 @@ source .env
 if sbx ls --quiet | grep -q "$PROJECT_NAME"; then
   exec sbx run \
     --name "$PROJECT_NAME" \
-    -e "OPENCODE_CONFIG=/home/agent/sandbox-config/opencode.json" \
+    -e "OPENCODE_CONFIG=/home/agent/sandbox-config/opencode.jsonc" \
     "$@"
 else
   exec sbx run docker.io/sbx/opencode:1.18.31 \
     --kit ./dotnet-node-toolchain \
     --name "$PROJECT_NAME" \
     --clone \
-    -e "OPENCODE_CONFIG=/home/agent/sandbox-config/opencode.json" \
+    -e "OPENCODE_CONFIG=/home/agent/sandbox-config/opencode.jsonc" \
     "$PROJECT_FOLDER" \
+    "/Users/nikolas/da-repos/k8s-applications:/home/agent/k8s-applications" \
     "sandbox-notes:/home/agent/sandbox-notes" \
     "sandbox-config:/home/agent/sandbox-config" \
     "$@"
