@@ -3,6 +3,9 @@
   "instructions": ["/home/agent/sandbox-config/AGENTS.md"],
   "permission": {
     "external_directory": "allow",
+    "read": {
+      "*.env*": "allow"
+    },
     "bash": {
       "npm": "deny",
       "npx": "deny",
