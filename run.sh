@@ -6,12 +6,12 @@ cd "$(dirname "$0")"
 source .env
 
 if sbx ls --quiet | grep -q "$PROJECT_NAME"; then
-  exec sbx run \
+  sbx run \
     --name "$PROJECT_NAME" \
     --env-file .env.sandbox \
     -- -c
 else
-  exec sbx run docker.io/sbx/opencode:1.18.31 \
+  sbx run docker.io/sbx/opencode:1.18.31 \
     --kit ./dotnet-node-toolchain \
     --name "$PROJECT_NAME" \
     --env-file .env.sandbox \
